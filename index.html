@@ -4,501 +4,230 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Document</title>
-</head>
-<style>
-  body
-   /*thanh menu*/
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <title>XQ</title>
+  </head>
   
-{
-  margin: 0;
-  padding: 0;
-  
-  /* make it look decent enough */
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  <style>
+    
+    #logo img{
+     max-width: 50px;
+     height: 50px;
+    }
+    *{
+    margin: 0;
+    padding: 0;
 }
-
-#menuToggle
-{
-  display: block;
+/*thanh đa cấp menu*/
+header, nav{
+    /* canh giữa cách lề mỗi bên 10% */
+    margin: 5px 10%;
+}
+nav{
+    background: #99ccff; /*tô màu cho menu cha*/
+    border-radius: 5px; /* bo góc */
+}
+nav ul{
+    display: flex;
+}
+nav> ul li{
+    list-style: none; /* bỏ dấu chấm mặc định của li */
+    /* kẻ đường bên trái và bên phải của li */
+    border-right: 1px solid #1affa3;
+    border-left:1px solid #990099 ;
+}
+nav> ul li a{
+    display: block;
+    padding: 0 25px;
+    line-height: 50px;
+    color: #1a0000;
+     text-decoration: none;
+}
+nav ul li:first-child {
+    border-left: none; /* bỏ đường kè trái của phần tử đầu tiên */
+}
+nav> ul li:first-child a{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+/* Khi hover đến li, tô màu cho thẻ a */
+nav ul li:hover>a{
+    background: #1a0000;
+    opacity: .7;
+    color: yellow;
+}
+/*menu con*/
+/*Ẩn các menu con cấp 1,2,3*/
+nav li ul{
+    display: none;
+    width: 100%;
+    position: absolute;
+}
+nav li>ul li{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: #999;
+    text-align: left;
+}
+nav li>ul li:first-child a{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+nav li>ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+nav li>ul li:last-child a{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+/*khi hover thì hiện menu con*/
+nav  li:hover > ul{
+    display:  block;
+}
+/*Hiển thị menu con cấp 2,3,4 bên cạnh phải*/
+nav > ul li > ul li >ul{
+    margin-left: 352px;
+    margin-top: -50px;
+}
+/*thanh tìm kiếm*/
+.search {
+  width: 100%;
   position: relative;
-  top: 50px;
-  left: 50px;
-  
-  z-index: 1;
-  
-  -webkit-user-select: none;
-  user-select: none;
+  display: flex;
 }
 
-#menuToggle a
-{
-  text-decoration: none;
-  color: #232323;
-  
-  transition: color 0.3s ease;
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
 }
 
-#menuToggle a:hover
-{
-  color: tomato;
+.searchTerm:focus{
+  color: #00B4CC;
 }
 
-
-#menuToggle input
-{
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  
+.searchButton {
+  width: 100px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: right;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
-  
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
-  
-  -webkit-touch-callout: none;
+  font-size: 20px;
 }
 
-/*
- * Just a quick hamburger
- */
-#menuToggle span
-{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  
-  background: #cdcdcd;
-  border-radius: 3px;
-  
-  z-index: 1;
-  
-  transform-origin: 4px 0px;
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
-}
-
-#menuToggle span:first-child
-{
-  transform-origin: 0% 0%;
-}
-
-#menuToggle span:nth-last-child(2)
-{
-  transform-origin: 0% 100%;
-}
-
-/* 
- * Transform all the slices of hamburger
- * into a crossmark.
- */
-#menuToggle input:checked ~ span
-{
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
-}
-
-/*
- * But let's hide the middle one.
- */
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-/*
- * Ohyeah and the last one should go the other direction
- */
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
-#menu
-{
+.wrap{
+  width: 30%;
   position: absolute;
-  width: 300px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-  
-  background: #ededed;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  /* to stop flickering of text in safari */
-  
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
-#menu li
-{
-  padding: 10px 0;
-  font-size: 22px;
-}
-
-/*
- * And let's slide it in from the left
- */
-#menuToggle input:checked ~ ul
-{
-  transform: none;
-} 
-figure {
-  position: relative;
-}
- /*hình ảnh*/
-figure:before,
-figure:after {
-  content: '';
-  height: 990px;
+footer{
+     position: relative;
+     width: 100%;
+     height: auto;
+     padding: 50px 100px;
+     background: orangered;
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+ }
+footer .container{
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     flex-direction: row;
+ }
+ img{
   width: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-}
+  height: 800px;
+ }
  
-img {
-  width: 100%;
-  height: 890px;
-  margin: 0;
-  padding: 0;
-}
-/*search*/
-* {
-	box-sizing: border-box;
-}
-
-html, body {
-	min-height: 100vh;
-}
-
-body {
-	display: grid;
-	grid-template:
-		"search" minmax(300px, 50vh)
-		"results" minmax(20%, auto)
-		/ 1fr;
-	margin: 0;
-	font: 24px/1.5 system-ui, sans-serif;
-}
-
-
-
-#search {
-	display: grid;
-	grid-area: search;
-	grid-template:
-		"search" 100x
-		/ 100px;
-	justify-content: center;
-	align-content: center;
-	justify-items: stretch;
-	align-items: stretch;
-	background: hsl(0, 0%, 99%);
-  text-align: right
-}
-
-#search input {
-	display: block;
-	grid-area: search;
-	-webkit-appearance: none;
-	appearance: none;
-	width: 100px;
-	height: 80px;
-	background: none;
-	padding: 0 30px 0 60px;
-	border: none;
-	border-radius: 100px;
-	font: 24px/1 system-ui, sans-serif;
-	outline-offset: -8px;
-  text-align: right
-}
-
-
-#search svg {
-	grid-area: search;
-	overflow: visible;
-	color: hsl(215, 100%, 50%);
-	fill: none;
-	stroke: currentColor;
-  text-align: right
-}
-
-
-.spark {
-	fill: currentColor;
-	stroke: none;
-	r: 15;
-}
-
-.spark:nth-child(1) {
-	animation:
-		spark-radius 2.03s 1s both,
-		spark-one-motion 2s 1s both;
-    text-align: right
-
-}
-
-@keyframes spark-radius {
-	0% { r: 0; animation-timing-function: cubic-bezier(0, 0.3, 0, 1.57) }
-	30% { r: 15; animation-timing-function: cubic-bezier(1, -0.39, 0.68, 1.04) }
-	95% { r: 8 }
-	99% { r: 10 }
-	99.99% { r: 7 }
-	100% { r: 0 }
-}
-
-@keyframes spark-one-motion {
-	0% { transform: translate(-20%, 50%); animation-timing-function: cubic-bezier(0.63, 0.88, 0, 1.25) }
-	20% { transform: rotate(-0deg) translate(0%, -50%); animation-timing-function: ease-in }
-	80% { transform: rotate(-230deg) translateX(-20%) rotate(-100deg) translateX(15%); animation-timing-function: linear }
-	100% { transform: rotate(-360deg) translate(30px, 100%); animation-timing-function: cubic-bezier(.64,.66,0,.51) }
-}
-
-.spark:nth-child(2) {
-	animation:
-		spark-radius 2.03s 1s both,
-		spark-two-motion 2.03s 1s both;
-}
-
-@keyframes spark-two-motion {
-	0% { transform: translate(120%, 50%) rotate(-70deg) translateY(0%); animation-timing-function: cubic-bezier(0.36, 0.18, 0.94, 0.55) }
-	20% { transform: translate(90%, -80%) rotate(60deg) translateY(-80%); animation-timing-function: cubic-bezier(0.16, 0.77, 1, 0.4) }
-	40% { transform: translate(110%, -50%) rotate(-30deg) translateY(-120%); animation-timing-function: linear }
-	70% { transform: translate(100%, -50%) rotate(120deg) translateY(-100%); animation-timing-function: linear }
-	80% { transform: translate(95%, 50%) rotate(80deg) translateY(-150%); animation-timing-function: cubic-bezier(.64,.66,0,.51) }
-	100% { transform: translate(100%, 50%) rotate(120deg) translateY(0%) }
-}
-
-.spark:nth-child(3) {
-	animation:
-		spark-radius 2.05s 1s both,
-		spark-three-motion 2.03s 1s both;
-}
-
-@keyframes spark-three-motion {
-	0% { transform: translate(50%, 100%) rotate(-40deg) translateX(0%); animation-timing-function: cubic-bezier(0.62, 0.56, 1, 0.54) }
-	30% { transform: translate(40%, 70%) rotate(20deg) translateX(20%); animation-timing-function: cubic-bezier(0, 0.21, 0.88, 0.46) }
-	40% { transform: translate(65%, 20%) rotate(-50deg) translateX(15%); animation-timing-function: cubic-bezier(0, 0.24, 1, 0.62) }
-	60% { transform: translate(60%, -40%) rotate(-50deg) translateX(20%); animation-timing-function: cubic-bezier(0, 0.24, 1, 0.62) }
-	70% { transform: translate(70%, -0%) rotate(-180deg) translateX(20%); animation-timing-function: cubic-bezier(0.15, 0.48, 0.76, 0.26) }
-	100% { transform: translate(70%, -0%) rotate(-360deg) translateX(0%) rotate(180deg) translateX(20%); }
-}
-
-
-
-
-.burst {
-	stroke-width: 3;
-}
-
-.burst :nth-child(2n) { color: #ff783e }
-.burst :nth-child(3n) { color: #ffab00 }
-.burst :nth-child(4n) { color: #55e214 }
-.burst :nth-child(5n) { color: #82d9f5 }
-
-.circle {
-	r: 6;
-}
-
-.rect {
-	width: 10px;
-	height: 10px;
-}
-
-.triangle {
-	d: path("M0,-6 L7,6 L-7,6 Z");
-	stroke-linejoin: round;
-}
-
-.plus {
-	d: path("M0,-5 L0,5 M-5,0L 5,0");
-	stroke-linecap: round;
-}
-
-
-
-
-.burst:nth-child(4) {
-	transform: translate(30px, 100%) rotate(150deg);
-}
-
-.burst:nth-child(5) {
-	transform: translate(50%, 0%) rotate(-20deg);
-}
-
-.burst:nth-child(6) {
-	transform: translate(100%, 50%) rotate(75deg);
-}
-
-.burst * {}
-
-@keyframes particle-fade {
-	0%, 100% { opacity: 0 }
-	5%, 80% { opacity: 1 }
-}
-
-.burst :nth-child(1) { animation: particle-fade 600ms 2.95s both, particle-one-move 600ms 2.95s both; }
-.burst :nth-child(2) { animation: particle-fade 600ms 2.95s both, particle-two-move 600ms 2.95s both; }
-.burst :nth-child(3) { animation: particle-fade 600ms 2.95s both, particle-three-move 600ms 2.95s both; }
-.burst :nth-child(4) { animation: particle-fade 600ms 2.95s both, particle-four-move 600ms 2.95s both; }
-.burst :nth-child(5) { animation: particle-fade 600ms 2.95s both, particle-five-move 600ms 2.95s both; }
-.burst :nth-child(6) { animation: particle-fade 600ms 2.95s both, particle-six-move 600ms 2.95s both; }
-
-@keyframes particle-one-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(-20deg) translateX(8%) scale(0.5, 0.5) } }
-@keyframes particle-two-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(0deg) translateX(8%) scale(0.5, 0.5) } }
-@keyframes particle-three-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(20deg) translateX(8%) scale(0.5, 0.5) } }
-@keyframes particle-four-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(-35deg) translateX(12%) } }
-@keyframes particle-five-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(0deg) translateX(12%) } }
-@keyframes particle-six-move { 0% { transform: rotate(0deg) translate(-5%) scale(0.0001, 0.0001) } 100% { transform: rotate(35deg) translateX(12%) } }
-
-
-
-.bar {
-	width: 100%;
-	height: 100%;
-	ry: 50%;
-	stroke-width: 10;
-	animation: bar-in 900ms 3s both;
-}
-
-@keyframes bar-in {
-	0% { stroke-dasharray: 0 180 0 226 0 405 0 0 }
-	100% { stroke-dasharray: 0 0 181 0 227 0 405 0 }
-}
-
-.magnifier {
-	animation: magnifier-in 600ms 3.6s both;
-	transform-box: fill-box;
-}
-
-@keyframes magnifier-in {
-	0% { transform: translate(20px, 8px) rotate(-45deg) scale(0.01, 0.01); }
-	50% { transform: translate(-4px, 8px) rotate(-45deg); }
-	100% { transform: translate(0px, 0px) rotate(0deg); }
-}
-
-.magnifier .glass {
-	cx: 27;
-	cy: 27;
-	r: 8;
-	stroke-width: 3;
-}
-.magnifier .handle {
-	x1: 32;
-	y1: 32;
-	x2: 44;
-	y2: 44;
-	stroke-width: 3;
-}
-
-#results {
-	grid-area: results;
-	background: hsl(0, 0%, 95%);
-}
-h1{
-  text-align: center;
-  font-weight: 800;
-  color: #b300b3;
-  font-style: italic;
-}
-
 </style>
 <body>
-<header>
-  
-  <!--thanh menu-->
-    <nav role="navigation">
-      <div id="menuToggle">
-       
-        <input type="checkbox" />
+<html>
+<!--thanh menu-->
+<header> 
+    <div id="logo">
+        <img src="https://cdn2.vectorstock.com/i/1000x1000/90/81/xq-x-q-logo-initial-mark-vector-26459081.jpg" alt="">
+    </div>
+</header>
+<section>
+<nav>
+    <ul>
+        <li><a href="#" title="Trang chủ">Trang chủ</a></li>
+        <li><a href="" title="Giới thiệu">Giới thiệu</a></li>
+        <li><a href="" title="Tạp chí design">Tạp chí design</a>
+            <!-- menu con sổ xuống cấp 1 -->
+            <ul>
+                <li><a href="" title="Trang 1">Trang 1</a></li>
+                <li><a href="" title="Trang 2">Trang 2</a></li>
+            </ul>
+            </li>
+        <li><a href="" title="Du lịch">Du lịch</a>
+             <ul>
+                <li><a href="" title="Ngày 1">Ngày 1</a></li>
+                <li><a href="" title="Ngày 2">Ngày 2</a></li>
+            </ul>
+          </li>
+        <li><a href="" title="Liên hệ">Liên hệ</a></li>
     
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-       <nav>
-            <div class="container">
-          <li class="current"><a href="" target="active">Trang chủ</a></li>
-	  <li class="current"><a href="Minhlaai.html" target="active">Mình là ai</a></li>
-	  <li class="current"><a href="NhaTrang.html" target="active">Quê hương tôi</a></li>
-	<li class="current"><a href="sothich.html" target="active">Sở thích của tôi</a></li>
-           <li class="current"><a href="ngaymoi.html" target="active">Ngày mới của tôi </a></li>		    
-     </ul> 
-            </div>
-    </nav>
+    </ul>
+</nav>
+<div class="wrap">
+  <form action="" class="search" method="post">
+     <input type="text" class="searchTerm" placeholder="Bạn muốn tìm gì?">
+     <button type="submit" class="searchButton">
+       Submit
+    </button>
+  </form>
+</div>
+<img src="https://www.caodangvietmy.edu.vn/wp-content/uploads/2017/06/ecole-de-dessin-2.jpg" alt="">
+</section>
+<footer>
+  <div class="container">
+      <!--Bắt Đầu Nội Dung Giới Thiệu-->
+      <div class="noi-dung about">
+          <h2>Thiết kế bởi Xuân Quỳnh</h2>
         
-      </header>
- <section>
-   <!--search-->
-   <div id="search">
-    <svg viewBox="0 0 420 60" xmlns="http://www.w3.org/2000/svg">
-      <rect class="bar"/>
+         
       
-      <g class="magnifier">
-        <circle class="glass"/>
-        <line class="handle" x1="32" y1="32" x2="44" y2="44"></line>
-      </g>
-  
-      <g class="sparks">
-        <circle class="spark"/>
-        <circle class="spark"/>
-        <circle class="spark"/>
-      </g>
-  
-      <g class="burst pattern-one">
-        <circle class="particle circle"/>
-        <path class="particle triangle"/>
-        <circle class="particle circle"/>
-        <path class="particle plus"/>
-        <rect class="particle rect"/>
-        <path class="particle triangle"/>
-      </g>
-      <g class="burst pattern-two">
-        <path class="particle plus"/>
-        <circle class="particle circle"/>
-        <path class="particle triangle"/>
-        <rect class="particle rect"/>
-        <circle class="particle circle"/>
-        <path class="particle plus"/>
-      </g>
-      <g class="burst pattern-three">
-        <circle class="particle circle"/>
-        <rect class="particle rect"/>
-        <path class="particle plus"/>
-        <path class="particle triangle"/>
-        <rect class="particle rect"/>
-        <path class="particle plus"/>
-      </g>
-    </svg>
-    <input type=search name=q aria-label="Search for inspiration"/>
+      <div class="noi-dung contact">
+          <h6>Thông Tin Liên Hệ</h6>
+          <ul class="info">
+              <li>
+                  <span><i class="fa fa-map-marker"></i></span>
+                  <span><br>Phường Vĩnh Trường - Tp.Nha Trang - Khánh Hoá</br></span>
+              </li>
+              <li>
+                  <span><i class="fa fa-phone"></i></span>
+                  <p><a href="#">0336414621</a></p>
+              </li>
+              <li>
+                  <span><i class="fa fa-envelope"></i></span>
+                  <p><a href="#">nguyenngocxuanquynh922002@gmail.com</a></p>
+             </li>
+              <li>
+                  <form class="form">
+                      <input type="email" class="form__field" placeholder="Đăng Ký Subscribe Email" />
+                      <button type="button" class="btn btn--primary  uppercase">Gửi</button>
+                  </form>
+              </li>
+          </ul>
+      </div>
+      <!--Kết Thúc Nội Dung Liên Hệ-->
   </div>
-  <h1> CHÀO MỪNG CÁC BẠN ĐẾN VỚI TRANG WEB CỦA TÔI</h1>
-  <div id="results">
-   <img src="https://mediablog.cdnpk.net/sites/9/2021/12/An-Introduction-To-Graphic-Design-Part-1.jpg">
- </section>
- <footer>
-  <div class="footer-right">
-    <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-    <a href="https://www.linkedin.com/in/qu%E1%BB%B3nh-nguy%E1%BB%85n-924077233/"><i class="fa fa-linkedin"></i></a>
-    <a href="https://github.com/nguyenngocxuanquynh"><i class="fa fa-github"></i></a>
- </footer>
+</footer>
+</footer>
 </body>
 </html>
