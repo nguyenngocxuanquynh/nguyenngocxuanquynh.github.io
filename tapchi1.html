@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XQ</title>
+</head>
+<style>
+    :root {
+	/* colour scheme */
+	--bg: #f4f4f4;
+	--bg-muted: #ececec;
+	--text: #262626;
+	--text-muted: #ccc;
+	--hilite: blue;
+	/* font defaults */
+	--ff-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	--ff-serif: "Georgia","Times New Roman", serif;
+	/* font-size defaults */
+	--fs0: clamp(3.05rem, calc(-0.20rem + 16.27vw), 11.39rem);
+	--fs1: clamp(2.44rem, calc(0.43rem + 10.05vw), 7.59rem);
+	--fs2: clamp(1.95rem, calc(0.74rem + 6.07vw), 5.06rem);
+	--fs3: clamp(1.56rem, calc(0.86rem + 3.54vw), 3.38rem);
+	--fs4: clamp(1.25rem, calc(0.86rem + 1.95vw), 2.25rem);
+	--fs5: clamp(1.00rem, calc(0.80rem + 0.98vw), 1.50rem);
+	--fs6: clamp(0.80rem, calc(0.72rem + 0.39vw), 1.00rem);
+	--fs-small: .875rem;
+	/* measure defaults*/
+	--m: 45ch;
+	--m-short: 20ch;
+	--m-wide: 55ch;
+	/* line-height defaults*/
+	--lh-solid: 1;
+	--lh-copy: 1.5;
+	--lh-title: 1.2;
+	/* letter-spacing defaults */
+	--ls: .25em;
+	--ls-short: -.05em;
+	--ls-wide: .5em;
+	/* .x-wrapper defaults */
+	--content-inline-margin: 10vmin;
+	--content-max-width: 70rem;
+	/* .x-grid defaults */
+	--x-grid-min: 20rem;
+	--x-grid-max: max-content;
+	--x-grid-gap: 1rem;
+	/* .x-stack defaults*/
+	--x-stack-margin: 1em;
+}
+
+::selection {
+	background: var(--text);
+	color: var(--bg);
+}
+
+html {
+	font-size: 100%;
+	block-size: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	text-rendering: optimizeSpeed;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+svg {
+	max-block-size: 100%;
+	pointer-events: none;
+}
+
+img {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+body {
+	block-size: 100%;
+	font-family: var(--ff-serif);
+	font-size: 1rem;
+	font-weight: 400;
+	padding-block: 5vmin;
+	background-color: var(--bg);
+	color: var(--text);
+}
+
+h1 {
+	font-size: var(--fs4);
+	line-height: var(--lh-title);
+	max-inline-size: var(--m-short);
+}
+
+span {
+	font-family: var(--ff-sans);
+	font-size: var(--ff-small);
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+p, ul ,ol, dl {
+	line-height: var(--lh-copy);
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+article h2 {
+	font-size: var(--fs5);
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+article img {
+	object-fit: cover;
+	aspect-ratio: 2/1;
+}
+
+/*-----------------------------
+LAYOUT UTILITIES
+-----------------------------*/
+
+.x-wrapper {
+	margin-inline: auto;
+	inline-size: min(100% - var(--content-inline-margin), var(--content-max-width)); 
+}
+
+.x-grid {
+	display: grid;
+	gap: var(--x-grid-gap);
+	grid-template-columns: repeat(auto-fit, minmax(min(var(--x-grid-min), 100%), var(--x-grid-max)));
+}
+
+.x-stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.x-stack * {
+  margin-block: 0;
+} 
+
+.x-stack * + * {
+  margin-block-start: var(--x-stack-margin);
+}
+
+.x-grid > * {
+  margin-block-start: 0;
+}
+
+/*-----------------------------
+NEWS BLOCK LAYOUTS
+-----------------------------*/
+
+.news-section {
+	--content-max-width: 90rem;
+	--x-grid-min: 34rem;
+	--x-grid-gap: 1px;
+}
+
+.news-featured {
+	--content-inline-margin: 1px;
+	--content-max-width: 48rem;
+	padding: 1rem;
+	margin-inline: auto;
+	border: 1px solid var(--text-muted);
+}
+
+.news-featured > *:not(span, h1) {
+  margin-inline: auto;
+}
+
+.news-featured p {
+	font-size: var(--fs5);
+	max-inline-size: var(--m-wide);
+}
+
+.news-featured p:first-of-type:first-letter {
+	font-size: 3em;
+	float: left;
+	padding-block-start: min(.5rem, 1rem);
+	margin-inline-end: min(.5rem, 1rem);
+}
+
+.news-latest {
+	--content-inline-margin: 1px;
+	--content-max-width: 48rem;
+	--x-grid-min: 16rem;
+	--x-grid-gap: 1px;
+	padding: 1px;
+	background-color: var(--text-muted);
+}
+
+.news-latest article {
+	padding: 1rem;
+	background-color: var(--bg);
+}
+
+
+</style>
+<body>
+    <div class="news-section x-wrapper x-grid">
+
+        <article class="news-featured x-wrapper x-stack">
+            <span>Ruth Ansel</span>
+            <img src="https://i0.wp.com/www.printmag.com/wp-content/uploads/2013/10/2a34d8_9ebf8c8e35854ddbb441e8ac61301d2dmv2.jpg?fit=628%2C391&ssl=1" alt="" width="800">
+            <h1>"Ai cũng có thể chụp một bức ảnh đẹp bất cứ lúc nào nhưng rất khó để tạo ra những bức ảnh xuất sắc có chủ đích, nhất quán và độc đáo"</h1>
+            <p>Là đồng giám đốc nghệ thuật của Harper’s Bazaar vào những năm 60, giám đốc nghệ thuật đầu tiên của Tạp chí New York Times vào những năm 70 và giám đốc sáng tạo giám sát cải biên Tạp chí Vanity Fair vào những năm 80, Ruth Ansel không chỉ đem đến ngành công nghiệp xuất bản bóng bẩy một vài nét tinh tế của nhạc rock ‘n’ roll, bà còn đưa tạp chí trở thành một  một dấu ấn quan trọng cho cả một thời đại.Ruth Ansel thành lập studio vào năm 1900, thực hiện thiết kế sách chuyên khảo cho Leibovitz, Richard Avedon và Peter Beard, cũng như các chiến dịch cho Versace, Karl Lagerfeld và Club Monaco. </p>
+            
+        </article>
+    
+        <div class="news-latest x-wrapper x-grid">
+            
+            <article class="x-stack">
+                <span> Chip Kidd</span>
+                <h2></h2>
+                <img src="https://bestprint.cdn.vccloud.vn/wp-content/uploads/2022/02/chip-kidd-portrait-1-big1.jpg" alt="" width="400">
+                <p>Là một trong những nhà thiết kế đồ họa giỏi nhất trong thế giới xuất bản sách. Hiện ông làm Phó Giám đốc Nghệ thuật tại nhà xuất bản danh tiếng Alfred A. Knopf – nơi ông đã làm việc kể từ khi tốt nghiệp trường đại học Penn State. Những thành tựu nổi bật nhất của ông phải kể đến như “All The Pretty Horses” của Cormac McCarthy, “The Secret History” của Donna Tartt, “Jurassic Park” của Michael Crichton, “1Q84” của Haruki Murakami và đồng sáng tạo “True Prep” với Lisa Birnbach.
+    
+    </p>
+            </article>
+            
+            <article class="x-stack">
+                <span>Alex Trochut</span>
+                <h2></h2>
+                <img src="https://cdn.domestika.org/c_fill,dpr_auto,f_auto,pg_1,t_base_params/v1562582112/course-covers/000/000/520/520-original.jpg?1562582112" alt="featured photo" width="400">
+                <p>LAlex đã phát triển công việc thiết kế kiểu chữ và minh họa cho các thương hiệu như Nike, Adidas, BBC, Coca-Cola, Pepsi; các tên tuổi âm nhạc đình đàm như Katy Perry, Rolling Stones; và các ấn phẩm như The New York Times và The Guardian.à một nghệ sĩ người Tây Ban Nha, nhà thiết kế đồ họa, thiết kế kiểu chữ và họa sĩ minh họa nổi tiếng thế giới.Alex đã phát triển công việc thiết kế kiểu chữ và minh họa cho các thương hiệu như Nike, Adidas, BBC, Coca-Cola, Pepsi; các tên tuổi âm nhạc đình đàm như Katy Perry, Rolling Stones; và các ấn phẩm như The New York Times và The Guardian.</p>
+            </article>
+            
+            <article class="x-stack">
+                <span></span>
+                <h2></h2>
+                <img src="https://www.arena-multimedia.vn/wp-content/uploads/2021/05/Morag-Myerscough.jpg" alt="" width="400">
+                <p>Trong hơn 30 năm gắn bó với nghề, hầu hết những tác phẩm nghệ thuật gây được tiếng vang của Myerscough đều thuộc lĩnh vực thiết kế đồ họa không gian: Mục tiêu cao cả trong sự nghiệp thiết kế của bà chính là có thể biến những nơi xa lạ thành ngôi nhà chung của mọi người.”</p>
+            </article>
+            
+            <article class="x-stack">
+                <span>Jonathan Barnbrook </span>
+                <h2>The long awaited season 4 of TV series this sunday</h2>
+                <img src="data:image/jpeg;base64,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" alt="featured photo" width="400">
+                <p>Là nhà thiết kế đồ họa, nhà thiết kế kiểu chữ, nhà thiết kế đồ họa chuyển động, nhà thiết kế công nghiệp và nhà hoạt động xã hội nổi tiếng thế giới.</p>
+            </article>
+            
+        </div>
+        
+    </div>  
+</body>
+</html>
