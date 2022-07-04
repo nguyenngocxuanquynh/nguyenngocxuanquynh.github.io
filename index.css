@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XQ</title>
+    <style>
+       @font-face {
+	font-family: bubblegum;
+	src: url("https://ik.imagekit.io/293iqohse/fonts/cartoon/Bubblegum_TQKAGJJwG.ttf?ik-sdk-version=javascript-1.4.3&updatedAt=1656449149615");
+}
+
+:root {
+	--water-gradient-primary: #6fffe9, #90e0ef, #0077b6aa;
+	--water-gradient-secondary: #6fffe9 30%, #90e0ef, #48cae4;
+	--water-light: inset 2px -2px 10px #6fffe9;
+	--water-blend: soft-light;
+	--water-opacity: 0.25;
+}
+
+body {
+	min-height: 100vh;
+	background-color: #edfcfa;
+	background: linear-gradient(#edfcfa, #ade8f4);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+svg {
+	width: 0;
+	height: 0;
+}
+
+.headline {
+	font-size: 3rem;
+	font-family: bubblegum;
+	margin-bottom: 4rem;
+	background: linear-gradient(var(--water-gradient-secondary));
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	filter: drop-shadow(2px 4px 2px #0077b6aa);
+}
+
+.liquid-loader {
+	position: relative;
+	width: 240px;
+	aspect-ratio: 1/1;
+	display: block;
+	filter: url(#water-cohesion);
+}
+
+.water-drop,
+.water-drop::after {
+	position: absolute;
+	top: 0;
+	aspect-ratio: 1/1;
+}
+
+.water-drop {
+	width: 100%;
+	left: 0;
+	animation-name: anim-circle;
+	animation-delay: calc(0.4s * var(--delay));
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(0.91, 0.38, 0.21, 0.92);
+}
+
+.water-drop::after {
+	content: "";
+	width: 45px;
+	left: calc(50% - 20px);
+	border-radius: 50%;
+	background: linear-gradient(var(--water-gradient-primary));
+	box-shadow: var(--water-light);
+	mix-blend-mode: var(--water-blend);
+	filter: opacity(var(--water-opacity));
+}
+
+@keyframes anim-circle {
+	0% {
+		transform: rotate(0);
+	}
+	50%,
+	100% {
+		transform: rotate(360deg);
+	}
+}
+ 
+    </style>
+<body>
+    <svg>
+        <filter id="water-cohesion">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+            <feColorMatrix values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 40 -5
+            " />
+        </filter>
+    </svg>
+    
+    <h1 class="headline">Water drop loader</h1>
+    
+    <div class="liquid-loader">
+        <span class="water-drop" style="--delay:01"></span>
+        <span class="water-drop" style="--delay:02"></span>
+        <span class="water-drop" style="--delay:03"></span>
+        <span class="water-drop" style="--delay:04"></span>
+        <span class="water-drop" style="--delay:05"></span>
+        <span class="water-drop" style="--delay:06"></span>
+    </div>
+</body>
+</html>
