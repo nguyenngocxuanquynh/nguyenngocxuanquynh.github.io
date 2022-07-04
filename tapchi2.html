@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XQ</title>
+</head>
+<style>
+    /* -
+-*-~*~-*-*-~*~-*-*-~*~* |
+●▬▬▬▬▬▬▬๑۩۩๑▬▬▬▬▬▬▬●
+Made by ~
+Areal Alien ❥ 雷克斯
+●▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬●
+──────▄▀▄─────▄▀▄
+─────▄█░░▀▀▀▀▀░░█▄
+─▄▄──█░░░░░░░░░░░█──▄▄
+█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█
+-*-~*~-*-*-~*~-*-*-~*~* |
+- */
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400,700);
+
+:root {
+  --bc: #efeeee;
+  --white: #ffffff;
+	--black: #000000;
+  --red: #da2c4d;
+	--teal: #20c997;
+	--cyan: #17a2b8;
+	--primary: #f9c6cf;
+	--font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+* {
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0;
+  width: 100%;
+  min-height: 100vh;
+	overflow-x: hidden;
+	font-family: var(--font-family-sans-serif);
+  scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+  background-color: var(--bc);
+}
+/* Classes */
+.top {
+  padding: 2em;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+}
+.title {
+  color: var(--black);
+}
+.title h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 35px;
+  font-weight: 400;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+.title h3 {
+  font-size: 14px; 
+  font-weight: 400; 
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase; 
+  letter-spacing: 8px;
+  line-height: 0;
+}
+/* Parallax */
+.parallax1 {
+  position: relative;
+  background-image: url("https://static2.yan.vn/YanNews/2167221/201905/trieu-le-dinh-la-ai-tieu-su-su-nghiep-va-doi-tu-nu-dien-vien-4d9f99ef.jpg");
+  min-height: 50vh; 
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url("https://static2.yan.vn/YanNews/2167221/201905/trieu-le-dinh-la-ai-tieu-su-su-nghiep-va-doi-tu-nu-dien-vien-7f2f6c2d.jpg");
+  min-height: 50vh; 
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
+  position: absolute;
+}
+.parallax2 h2 {
+  font-size: 5em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--white);
+  z-index: 1;
+}
+.parallax3 {
+  position: relative;
+  background-image: url("https://bazaarvietnam.vn/wp-content/uploads/2021/06/kieu-toc-trieu-le-dinh-03.jpg");
+  min-height: 50vh; 
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Paragraph */
+.paragraph {
+  margin: 3em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.paragraph p {
+  width: 60%;
+  font-size: 1.05em;
+  line-height: 1.45em;
+  letter-spacing: .1em;
+  color: rgb(64, 64, 64);
+}
+.first span {
+  font-size: 4em;
+  color: var(--red);
+  float: left;
+  font-weight: 400;
+  line-height: 55px;
+  padding: .05em .2em 0 0;
+}
+.second span {
+  font-size: 4em;
+  color: var(--teal);
+  float: left;
+  font-weight: 400;
+  line-height: 55px;
+  padding: .05em .2em 0 0;
+}
+.third span {
+  font-size: 4em;
+  color: var(--cyan);
+  float: left;
+  font-weight: 400;
+  line-height: 55px;
+  padding: .05em .2em 0 0;
+}
+/* Selection */
+::selection {
+  color: var(--white);
+  background: rgba(161, 181, 201, .8);
+}
+/* SCROLLBAR */
+::-webkit-scrollbar-track {
+      background-color: #F5F5F5;
+}
+::-webkit-scrollbar {
+      width: 12px;
+      background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+      background-color: rgba(161, 181, 201, .8);
+}
+h4{
+    color:#da2c4d
+}
+</style>
+<body>
+    <section class="top">
+        <div class="title">
+          <h3>CÔNG CHÚA TỪ LÀNG QUÊ</h3>
+          <h1>TRIỆU LỆ DĨNH</h1>
+        </div>
+      </section>
+      <section class="page">
+        <div class="parallax1"></div>
+        <div class="paragraph first">
+          
+        <p>Xuất thân trong một gia đình thuần nông, có phần khó khăn khi ba làm cảnh sát địa phương, mẹ bán tạp hóa ở vùng quê hẻo lánh. Triệu Lệ Dĩnh sau khi tốt nghiệp cấp 3 thì bắt đầu công việc kiếm sống mưu sinh, giúp đỡ gia đình, thời điểm đó ước mơ bước chân vào Cbiz là hoang đường và mơ hồ với cô gái trẻ. Nhưng cuối cùng cơ hội cũng đến với cô khi giành quán quân trong cuộc thi Tìm kiếm ngôi sao năm 2016, Triệu Lệ Dĩnh có cơ hội bước chân vào showbiz để đóng một quảng cáo.</p>
+          <p>Sau những ngày tháng tích lũy kinh nghiệm trong nhiều vai diễn phụ, cuối cùng Triệu Lệ Dĩnh cũng có cơ hội thủ vai chính trong Lục Trinh truyền kỳ. Lập tức sau vai diễn này, cô chính thức trở thành diễn viên hạng A của làng giải trí Hoa ngữ. Sau Lục Trinh truyền kỳ, Triệu Lệ Dĩnh bắt đầu khẳng định tên tuổi của mình trong nhiều bộ phim có kinh phí đầu tư khủng như Sam Sam đến rồi, Hoa Thiên Cốt, Sở Kiều Truyện, … Với nét đẹp thanh thoát, đáng yêu, cùng với diễn xuất tốt, hóa thân nhân vật đa dạng, Triệu Lệ Dĩnh dần chinh phục khán giả.</p>
+        </div>
+        <div class="parallax2">
+          <div class="overlay"></div>
+          <h4>"Sự nỗ lực của tôi xứng đáng với vận may mà tôi đang có"</h4>
+        </div>
+        <div class="paragraph second">
+          <p>Không hổ danh là “Nữ hoàng rating”, Triệu Lệ Dĩnh có đến 3 bộ phim có lượt xem trên Youtube cao nhất Trung Quốc. Đầu tiên, khán giả không thể quên được Tiểu Sam Sam ngốc nghếch, thật thà và vô cùng ham ăn. Phim đạt được rating cao ngất ngưỡng, Triệu Lệ Dĩnh với 7 năm lão luyện chuyển mình ngoạn mục thành cô gái đáng yêu. Thành công của “Sam Sam đến rồi” giúp cô bước lên một tầm cao mới và chính thức trở thành “Nữ Thần Thiên Ưng”.</p>
+        </div>
+        <div class="parallax3"></div>
+        <div class="paragraph third">
+          <p>Trong showbiz, việc các diễn viên cùng cố gắng, cùng tiến bộ để khẳng định bản thân, thỉnh thoảng xảy ra xung đột là điều không tránh khỏi. Tuy nhiên, Triệu Lệ Dĩnh lại khá ồn ào trong vấn đề này.Trong suốt chặn đường đi của mình, có thể nói Triệu Lệ Dĩnh ngập chìm trong sự nổi tiếng và cả scandal. Thậm chí còn có thời gian bị khán giả đồng loạt tẩy chay. Tuy nhiên đứng trước sóng bão, cô luôn im lặng, nỗ lực và cố gắng không ngừng để chứng tỏ mình trên sân khấu.</p>
+          <p>Có nhiều người luôn ủng hộ cô ấy đồng thời cũng có những người luôn dèm pha cô gái nhỏ này và cô ấy cũng không phải là người hoàn hảo mọi mặt, tuy vậy không thể phủ nhận rằng cô ấy chính là một tấm gương vượt khó đáng để bao người phụ nữ học tập.</p>
+        </div>
+      </section>
+</body>
+</html>
