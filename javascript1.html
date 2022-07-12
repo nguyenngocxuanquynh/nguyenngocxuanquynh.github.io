@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+       <head>
+        <title>Bài tập của XQ</title>
+        <link rel="icon" href="">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+body{
+  background-image: url("https://dolatrees.com/wp-content/uploads/2021/11/png-canh-hoa-dolatrees-800x450.jpg");
+  background-repeat:  repeat-y;
+  background-size: 100% 100%;
+  text-align: center;
+  font-family: 'Helvetica', cursive;
+}
+h1{
+  text-align: center;
+  color: #ff3300;
+}
+    #noidung{background: #e6004c; height:250px; width:100%;color:#615552; font-size:25px;
+          text-align: center;
+          border-radius: 20px;
+          
+}
+#myForm{
+  color: rgb(8, 247, 8);
+  font-size: 25px;
+}
+#textbox1,#textbox2{
+  border-radius: 5px;
+  height:20px;
+  border: 2px solid #27d4d4
+}
+    button{background:#CDC1B6;
+        margin-left:10px;
+        border-radius:10px ;
+        height: 45px;
+        display: inline;
+        cursor: pointer;
+        border: 2px dashed  #e600e6 ;
+
+}
+</style>
+       </head>
+       <body>
+        <h1>Bài tập JavaScript</h1>
+      <form id="myForm" action="">
+         <p>Vui lòng nhập tên: <input id="textbox1" name="textname" type="text" /></p>
+         <p>Nhập n =  <input id="textbox2" name="n" type="text" /></p>
+       </form>
+        <p id="noidung"></p>
+        <button type="button" onclick="hienthi()">Hiển thị </button>            
+       <button type="button" onclick="tinhtong()">Tính tổng</button>            
+      <button type="button" onclick="tinhtongchan()">Tính tổng chẵn</button>  
+        <script>
+          function hienthi() {
+// Giới thiệu tên
+            document.getElementById("noidung").innerHTML = "Xin chào. Tôi là Nguyễn Ngọc Xuân Quỳnh" + document.forms["myForm"].textname.value;
+          }
+         function tinhtong() {
+              //Tính tổng từ 1 -> n
+              let text =0;
+              for( let i=1 ; i<=document.forms["myForm"].n.value;i++){
+                   text +=i;
+              }
+document.getElementById("noidung").innerHTML ="Tổng từ 1 đến " +  document.forms["myForm"].n.value + " là: "+text;
+          }
+        function tinhtongchan() {
+              //Tính tổng các số chẳn từ 1 -> n
+              let text =0;
+              for( let i=1 ; i<=document.forms["myForm"].n.value;i++){
+                if(i%2==0){
+                   text +=i;
+              }
+            }
+              
+document.getElementById("noidung").innerHTML ="Tổng các số chẵn từ 1 đến " +  document.forms["myForm"].n.value + " là: "+text;
+          }
+        </script>    
+     </body>
+</html>
