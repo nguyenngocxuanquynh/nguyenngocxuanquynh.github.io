@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+        background-image: url( https://i.pinimg.com/originals/96/35/41/9635412a2ebe1a2e41e4816eb81556d2.jpg);
+    
+    }
+        table, th, td {
+        border:1px solid black;
+        }
+        #checkbox2{
+            display: inline;
+        }
+        #yeucau{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+   
+
+<table style="width:100%">
+  <tr>
+    <td>
+    <div class="tableleft">
+        <form id="myForm" action="">
+            <p>Tên: <input id="textbox1" name="textname" type="text" /></p>
+            <p>Email: <input id="textbox2" name="email" type="text" /></p>
+        </form>
+        <p>Giới tính: </p>
+            <p><input id="checkbox1" name="nam" type="checkbox" />Nam</p>
+            <p><input id="checkbox2" name="nu" type="checkbox" />Nữ</p>
+            <label for="quoctich">Quốc tịch:</label>
+                <select id="quoctich">
+                <option value="Việt Nam">Việt Nam</option>
+                <option value="Trung Quốc">Trung Quốc</option>
+                <option value="Nhật Bản">Nhật Bản</option>
+                <option value="Hàn Quốc">Hàn Quốc</option>
+                <option value="Việt Nam" selected>Việt Nam</option>
+                </select>
+            <p>Sở thích:</p>
+            <p><input id="checkbox1" name="laptrinh" type="checkbox" />Lập trình</p>
+            <p><input id="checkbox2" name="dulich" type="checkbox" />Du lịch</p>
+            <p><input id="checkbox2" name="shopping" type="checkbox" />Shopping</p> 
+            <p id="yeucau"></p>
+                <button type="button" onclick="chapnhan()">Chấp nhận  </button>            
+                <button type="button" onclick="huy()">Hủy </button>            
+    </div>
+    </td>
+    <td>
+    <div class="tableright">
+        
+    </div>
+    </td>
+   
+  </tr>
+</table>
+<script>
+    
+</script>
+         
+</body>
+</html>
